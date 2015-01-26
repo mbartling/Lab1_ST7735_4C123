@@ -226,4 +226,6 @@ pip-log.txt
 *.iex
 *.htm
 *.html
+*.map
+*.lmp
 
