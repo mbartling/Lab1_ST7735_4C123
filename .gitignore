@@ -224,5 +224,6 @@ pip-log.txt
 *.plg
 *.tra
 *.iex
-
+*.htm
+*.html
 
