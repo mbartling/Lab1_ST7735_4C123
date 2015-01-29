@@ -33,11 +33,13 @@
 // Gnd (pin 1) connected to ground
 #include <stdio.h>
 #include <stdint.h>
- #include "UART0.h"
+#include "UART0.h"
 #include "ST7735.h"
 #include "PLL.h"
 #include "inc/tm4c123gh6pm.h"
-#include "interpreter.h"
+#include "interpreter.hpp"
+
+
 void DelayWait10ms(uint32_t n);
 
 // test image
@@ -480,19 +482,20 @@ int main(void){
   ST7735_InitR(INITR_REDTAB);
 	printf("\n[MAIN] %s:%d:%s() >> %s\n", __FILE__, __LINE__, __func__, "Starting Main LCD Test\n");
  
+  Interpreter myInterpreter = Interpreter();
+	myInterpreter.print();
   // Added Code
   int i, j, k;
   k = 10;
   char str[10];
-  for(j = 0; j < 4; j++){
-		for(i = 0; i < 2; i++){
+    for(j = 0; j < 4; j++){
+  for(i = 0; i < 2; i++){
       sprintf(str, "Minion#%d\n", k);
       k++;
       ST7735_Message(i, j, str, 0);    
     }
   }
   
-      ST7735_Message(0, 0, "wtf", 0);    
 
   // End Added Code
   // ST7735_OutString("Graphics test\n");
@@ -504,8 +507,6 @@ int main(void){
   //   ST7735_PlotNext(); 
   // }   // called 128 times
    while(1){
-		   interpreter();
-
    }
 
 }

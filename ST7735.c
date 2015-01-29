@@ -50,11 +50,20 @@
 // RESET (pin 3) connected to PA7 (GPIO)
 // VCC (pin 2) connected to +3.3 V
 // Gnd (pin 1) connected to ground
+
 #include <stdio.h>
 #include <stdint.h>
 #include "ST7735.h"
 #include "inc/tm4c123gh6pm.h"
 #include "ST7735_debug.h"
+
+// typedef unsigned int uint32_t;
+// typedef unsigned short uint16_t;
+// typedef unsigned char uint8_t;
+// typedef int int32_t;
+// typedef short int16_t;
+// typedef char int8_t;
+
 // 16 rows (0 to 15) and 21 characters (0 to 20)
 // Requires (11 + size*size*6*8) bytes of transmission for each character
 uint32_t StX=0; // position along the horizonal axis 0 to 20 
@@ -755,6 +764,8 @@ void ST7735_InitR(enum initRFlags option) {
   ST7735_SetCursor(0,0);
   StTextColor = ST7735_YELLOW;
   ST7735_FillScreen(0);                 // set screen to black
+
+  DEBUG_ST7735_PRINTF("Finished Initialization%c", '\n');
 }
 
 
@@ -1597,6 +1608,7 @@ void ST7735_Message(IN int device, IN int line, IN char* string, IN long value)
   // Set cursor Position
   StY = device*8 + line;
   StX = 0;
+  ST7735_DrawString(0,StY,"                     ",StTextColor);
 
   ST7735_OutString(string);
 	

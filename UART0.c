@@ -59,11 +59,18 @@
 #define UART_ICR_TXIC           0x00000020  // Transmit Interrupt Clear
 #define UART_ICR_RXIC           0x00000010  // Receive Interrupt Clear
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 void DisableInterrupts(void); // Disable interrupts
 void EnableInterrupts(void);  // Enable interrupts
 long StartCritical (void);    // previous I bit, disable interrupts
 void EndCritical(long sr);    // restore I bit to previous value
 void WaitForInterrupt(void);  // low power mode
+#ifdef __cplusplus
+}
+#endif
 #define FIFOSIZE   16         // size of the FIFOs (must be power of 2)
 #define FIFOSUCCESS 1         // return value on success
 #define FIFOFAIL    0         // return value on failure
@@ -126,6 +133,7 @@ void static copySoftwareToHardware(void){
 char UART0_InChar(void){
   char letter;
   while(Rx0Fifo_Get(&letter) == FIFOFAIL){};
+	if(letter == '\r') return('\n');
   return(letter );
 }
 // output ASCII character to UART

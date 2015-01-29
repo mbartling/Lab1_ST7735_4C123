@@ -27,6 +27,9 @@
 // U0Tx (VCP transmit) connected to PA1
 #ifndef UART0_H__
 #define UART0_H__
+#ifdef __cplusplus
+extern "C" {
+#endif
 // standard ASCII symbols
 #define CR   0x0D
 #define LF   0x0A
@@ -45,5 +48,9 @@
 void UART0_Init(void);
 char UART0_InChar(void);
 void UART0_OutChar(char data);
+
+#ifdef __cplusplus
+ }
+#endif
 
 #endif /*UART0_H__*/

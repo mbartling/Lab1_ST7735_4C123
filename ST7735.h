@@ -53,6 +53,10 @@
 #ifndef _ST7735H_
 #define _ST7735H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 // some flags for ST7735_InitR()
 enum initRFlags{
   none,
@@ -436,5 +440,9 @@ void Output_Color(uint32_t newColor);
 // Input: c string, Note will not automatically wrap
 // Input: value to display
 void ST7735_Message(IN int device, IN int line, IN char* string, IN long value);
+
+#ifdef __cplusplus
+ }
+#endif
 
 #endif

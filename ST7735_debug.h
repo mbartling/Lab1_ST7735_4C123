@@ -5,7 +5,7 @@
 
 #if DEBUG_ST7735 
 #include <stdio.h> 
-#define DEBUG_ST7735_PRINTF(fmt, ... ) printf( "\n[ST7735] %s:%d:%s() >> " fmt, \
+#define DEBUG_ST7735_PRINTF(fmt, ... ) printf( "[ST7735] %s:%d:%s() >> " fmt, \
         __FILE__, __LINE__, __func__, __VA_ARGS__ ) 
 #else 
 #define DEBUG_ST7735_PRINTF(fmt, ... ) /*DUMMY*/ 

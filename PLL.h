@@ -21,6 +21,11 @@
  http://users.ece.utexas.edu/~valvano/
  */
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 // The #define statement SYSDIV2 initializes
 // the PLL to the desired frequency.
 #define SYSDIV2 4
@@ -161,3 +166,6 @@ SYSDIV2  Divisor  Clock (MHz)
  126      127     3.150
  127      128     3.125
 */
+#ifdef __cplusplus
+ }
+#endif

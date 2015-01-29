@@ -17,14 +17,18 @@
 #include <rt_misc.h>
 #include "UART0.h"
 
-#pragma import(__use_no_semihosting_swi)
+//#pragma import(__use_no_semihosting_swi)
 
+#ifdef __cplusplus
+namespace std {
+extern "C" {
+#endif
 
 
 struct __FILE { int handle; /* Add whatever you need here */ };
 FILE __stdout;
 FILE __stdin;
-
+FILE __stderr;
 
 // int fputc(int ch, FILE *f) {
 //   UART0_OutChar(ch);
@@ -60,9 +64,9 @@ int fputc(int ch, FILE *f){
   UART0_OutChar(ch);
   return 1;
 }
-void _ttywrch(int ch){
-  UART0_OutChar(ch);
-}
+// void _ttywrch(int ch){
+  // UART0_OutChar(ch);
+// }
 
 // Get input from UART, echo
 int fgetc (FILE *f){
@@ -79,4 +83,9 @@ int ferror(FILE *f){
 void _sys_exit(int return_code) {
 label:  goto label;  /* endless loop */
 }
+
+#ifdef __cplusplus
+}
+}
+#endif
 

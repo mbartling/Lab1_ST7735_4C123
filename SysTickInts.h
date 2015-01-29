@@ -25,6 +25,9 @@
 #ifndef __SYSTICKINTS_H__ // do not include more than once
 #define __SYSTICKINTS_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 // **************SysTick_Init*********************
 // Initialize Systick periodic interrupts
 // Input: interrupt period
@@ -38,4 +41,8 @@ void SysTick_Init(uint32_t period);
 // Executed every 20ns*(period)
 void SysTick_Handler(void);
 
-#endif // __SYSTICKINTS_H__
+#ifdef __cplusplus
+ }
+#endif
+
+#endif /* __SYSTICKINTS_H__*/

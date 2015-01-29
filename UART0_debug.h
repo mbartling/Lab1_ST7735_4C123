@@ -5,7 +5,7 @@
 
 #if DEBUG_UART0 
 #include <stdio.h> 
-#define DEBUG_UART0_PRINTF(fmt, ... ) printf( "\n[UART0] %s:%d:%s() >> " fmt, \
+#define DEBUG_UART0_PRINTF(fmt, ... ) printf( "[UART0] %s:%d:%s() >> " fmt, \
         __FILE__, __LINE__, __func__, __VA_ARGS__ ) 
 #else 
 #define DEBUG_UART0_PRINTF(fmt, ... ) /*DUMMY*/ 
