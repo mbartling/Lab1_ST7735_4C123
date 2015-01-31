@@ -1592,6 +1592,7 @@ void Output_Color(uint32_t newColor){ // Set color of future output
 // Input: value to display
 void ST7735_Message(IN int device, IN int line, IN char* string, IN long value)
 {
+  char str_buff[32];
   if(line < 0 || line > 3){
     DEBUG_ST7735_PRINTF("Invalid Line, returning%c", '\n');
     return;
@@ -1609,9 +1610,10 @@ void ST7735_Message(IN int device, IN int line, IN char* string, IN long value)
   StY = device*8 + line;
   StX = 0;
   ST7735_DrawString(0,StY,"                     ",StTextColor);
+  sprintf(str_buff, "%s %d", string, value);
+  // ST7735_OutString(string);
+	ST7735_OutString(str_buff);
 
-  ST7735_OutString(string);
-	
 	// Get a white line
 	uint16_t color = ST7735_Color565(255, 255, 255);
 	//79 = 160/2 - 1 = _height/2 - 1

@@ -16,6 +16,8 @@
 
 int Command_disp_message(char * args);
 int Command_list(char * args);
+
+
 struct command
 {
   char *label;
@@ -81,7 +83,7 @@ int Command_list(char * args)
 
 int Command_disp_message(char * args)
 {
-  printf("Not implemented yet\n");
+  //printf("Not implemented yet\n");
   int disp, line, n;
   char str[64];
   sscanf(args, "%d %d %[^\t\r\n]", &disp, &line, str);

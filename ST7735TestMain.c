@@ -486,7 +486,7 @@ int main(void){
   char str[10];
   for(j = 0; j < 4; j++){
 		for(i = 0; i < 2; i++){
-      sprintf(str, "Minion#%d\n", k);
+      sprintf(str, "Minion#%d", k);
       k++;
       ST7735_Message(i, j, str, 0);    
     }
