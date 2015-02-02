@@ -22,6 +22,18 @@
  * likely indicating driver already configured. 
  */
 int ADC_Open(unsigned int channelNum);
+/**
+ * Pseudocode
+ int ADC_Open(uint32_t channelNum){
+  switch(channelNum):
+    select and activate clock for channel
+  delay();
+  switch(channelNum):
+    configure port/pins for ADC I/O
+  initialize(); //set ADC sample config
+  activate();   //register adc
+  }
+ */
 
 /**
  * @brief ADC_In gets one sample from the current ADC driver
@@ -32,6 +44,19 @@ int ADC_Open(unsigned int channelNum);
  * Other error codes are reserved.
  */
 unsigned short ADC_In(void);
+/**
+ * Pseudocode for ADC_In
+ unsigned short ADC_In(void){
+  target_sample_sequencer(3); //SS3 has a 1 sample FIFO
+  synchronize_conversion();   //synchronize with ADC, could be busy wait
+                              //or a timeout method
+  if(synchronize failed) return error;
+  result = MASK(ADC_SSFIFO);
+  return result;
+
+ }
+ */
+
 
 /**
  * @brief [brief description]
