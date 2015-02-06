@@ -29,7 +29,7 @@
 // Page 138 in tm4c123gh6pm 
 #define ARM_SYSCLK              0x00000004
 #define ARM_PIOSC               0x00000000
- 
+
 #define NVIC_ST_CTRL_CLK_SRC    ARM_SYSCLK  // Clock Source
 #define NVIC_ST_CTRL_INTEN      0x00000002  // Interrupt enable
 #define NVIC_ST_CTRL_ENABLE     0x00000001  // Counter mode
@@ -43,7 +43,7 @@ void WaitForInterrupt(void);  // low power mode
 // **************SysTick_Init*********************
 // Initialize SysTick periodic interrupts
 // Input: interrupt period
-//        Units of period are 12.5ns (assuming 50 MHz clock)
+//        Units of period are 12.5ns (assuming 80 MHz clock)
 //        Maximum is 2^24-1
 //        Minimum is determined by length of ISR
 // Output: none
